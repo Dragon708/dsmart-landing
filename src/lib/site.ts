@@ -10,5 +10,8 @@ export const PRODUCT_LINKS = {
   mythicWeb: "https://app.mythic.dsmarts.app",
   mythicPlay: "https://play.google.com/store/apps/details?id=com.mythiclobby.app",
   mythicPrivacy: "https://mythic.dsmarts.app/privacy",
-  calinvApi: "https://api.calinv.dsmarts.app",
+  calinvLanding: "https://calinv.dsmarts.app",
+  calinvWeb: "https://calinv.dsmarts.app/app",
+  calinvPlay: "https://play.google.com/store/apps/details?id=com.calinv.app",
+  calinvWindows: "https://descargas.dsmarts.app/windows/Calinv-Setup-latest.exe",
 } as const;

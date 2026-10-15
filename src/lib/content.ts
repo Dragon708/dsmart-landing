@@ -43,25 +43,25 @@ const es: Content = {
     eyebrow: "Compañía de software",
     title: "Creamos apps y servicios que la gente usa cada día.",
     subtitle:
-      "DSmart diseña, construye y opera productos digitales para Android y la web, de la idea a producción.",
+      "DSmart diseña, construye y opera productos digitales para Android, Windows y la web, de la idea a producción.",
     ctaProducts: "Ver productos",
     ctaContact: "Contactar",
   },
   about: {
     title: "Qué es DSmart",
     paragraphs: [
-      "DSmart es una compañía de software independiente. Desarrollamos productos propios para móvil y web, y nos encargamos de todo el ciclo: diseño, desarrollo, infraestructura y soporte.",
+      "DSmart es una compañía de software independiente. Desarrollamos productos propios para móvil, escritorio y web, y nos encargamos de todo el ciclo: diseño, desarrollo, infraestructura y soporte.",
       "Cada producto vive en su propio subdominio de dsmarts.app y tiene su propia política de privacidad y condiciones de uso.",
     ],
     pillars: [
       { title: "Producto propio", desc: "Construimos y mantenemos nuestras apps de principio a fin." },
-      { title: "Móvil y web", desc: "Apps nativas para Android y versiones web accesibles desde cualquier navegador." },
+      { title: "Móvil, escritorio y web", desc: "Apps para Android y Windows, y versiones web que funcionan en cualquier navegador." },
       { title: "Privacidad por defecto", desc: "Pedimos solo los datos necesarios para que cada producto funcione." },
     ],
   },
   products: {
     title: "Productos",
-    subtitle: "Lo que estamos construyendo ahora mismo.",
+    subtitle: "Apps que ya puedes usar hoy.",
     items: [
       {
         name: "Mythic Lobby",
@@ -77,9 +77,16 @@ const es: Content = {
       },
       {
         name: "Calinv",
-        status: "En desarrollo",
-        description: "Nuestro próximo producto. Su API ya está en línea para las primeras integraciones.",
-        links: [{ label: "API", href: PRODUCT_LINKS.calinvApi }],
+        status: "Disponible",
+        description:
+          "Inventario y caja para tiendas pequeñas, sin internet. Gratis para un negocio; con Premium sincroniza teléfonos, tiendas y personal. En Android, Windows y la web.",
+        icon: "/products/calinv.png",
+        links: [
+          { label: "Google Play", href: PRODUCT_LINKS.calinvPlay },
+          { label: "Descargar para Windows", href: PRODUCT_LINKS.calinvWindows },
+          { label: "Abrir en el navegador", href: PRODUCT_LINKS.calinvWeb },
+          { label: "Sitio web", href: PRODUCT_LINKS.calinvLanding },
+        ],
       },
     ],
   },
@@ -148,25 +155,25 @@ const en: Content = {
   hero: {
     eyebrow: "Software company",
     title: "We build apps and services people use every day.",
-    subtitle: "DSmart designs, builds and runs digital products for Android and the web, from idea to production.",
+    subtitle: "DSmart designs, builds and runs digital products for Android, Windows and the web, from idea to production.",
     ctaProducts: "See products",
     ctaContact: "Get in touch",
   },
   about: {
     title: "What is DSmart",
     paragraphs: [
-      "DSmart is an independent software company. We build our own mobile and web products and take care of the whole cycle: design, development, infrastructure and support.",
+      "DSmart is an independent software company. We build our own mobile, desktop and web products and take care of the whole cycle: design, development, infrastructure and support.",
       "Each product lives on its own dsmarts.app subdomain and has its own privacy policy and terms of use.",
     ],
     pillars: [
       { title: "Our own products", desc: "We build and maintain our apps end to end." },
-      { title: "Mobile and web", desc: "Native Android apps and web versions that run in any browser." },
+      { title: "Mobile, desktop and web", desc: "Apps for Android and Windows, plus web versions that run in any browser." },
       { title: "Privacy by default", desc: "We only ask for the data each product needs to work." },
     ],
   },
   products: {
     title: "Products",
-    subtitle: "What we are building right now.",
+    subtitle: "Apps you can use today.",
     items: [
       {
         name: "Mythic Lobby",
@@ -182,9 +189,16 @@ const en: Content = {
       },
       {
         name: "Calinv",
-        status: "In development",
-        description: "Our next product. Its API is already live for early integrations.",
-        links: [{ label: "API", href: PRODUCT_LINKS.calinvApi }],
+        status: "Available",
+        description:
+          "Stock and cash drawer for small shops, fully offline. Free for one business; Premium syncs phones, stores and staff. On Android, Windows and the web.",
+        icon: "/products/calinv.png",
+        links: [
+          { label: "Google Play", href: PRODUCT_LINKS.calinvPlay },
+          { label: "Download for Windows", href: PRODUCT_LINKS.calinvWindows },
+          { label: "Open in browser", href: PRODUCT_LINKS.calinvWeb },
+          { label: "Website", href: PRODUCT_LINKS.calinvLanding },
+        ],
       },
     ],
   },
