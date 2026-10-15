@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CONTENT, STACK, type Lang } from "@/lib/content";
 import { CONTACT_EMAIL, WHATSAPP_URL } from "@/lib/site";
+import { buildHomeJsonLd } from "@/lib/structured-data";
 import { ArrowIcon, ServiceIcon } from "./icons";
 
 type HomePageProps = { lang: Lang };
@@ -15,8 +16,12 @@ const Eyebrow = ({ children }: { children: string }) => (
 export const HomePage = ({ lang }: HomePageProps) => {
   const { hero, services, products, process, stack, about, contact } = CONTENT[lang];
 
+  // Escapa "<" para que ningún texto pueda cerrar la etiqueta <script>.
+  const jsonLd = JSON.stringify(buildHomeJsonLd(lang)).replaceAll("<", "\\u003c");
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <section className="relative overflow-hidden">
         <div aria-hidden className="bg-grid absolute inset-0" />
         <div aria-hidden className="glow absolute top-10 right-[-10%] size-[520px]" />
@@ -54,7 +59,7 @@ export const HomePage = ({ lang }: HomePageProps) => {
               src="/brand/dsmart-d.webp"
               alt="DSmart"
               width={400}
-              height={393}
+              height={386}
               priority
               className="float relative w-80 drop-shadow-2xl"
             />
