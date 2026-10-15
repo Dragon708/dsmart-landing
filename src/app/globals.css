@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Identidad provisional: cambiar estos tokens cambia toda la paleta. */
+:root {
+  --background: #fbfbfd;
+  --surface: #ffffff;
+  --border: #e4e7ee;
+  --foreground: #0f172a;
+  --muted: #5b6477;
+  --primary: #2f5bea;
+  --primary-soft: #eaf0ff;
+  --on-primary: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0f19;
+    --surface: #121827;
+    --border: #232b3d;
+    --foreground: #eef1f7;
+    --muted: #9aa3b5;
+    --primary: #7c9bff;
+    --primary-soft: #1a2445;
+    --on-primary: #0b0f19;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --font-sans: var(--font-geist-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
