@@ -4,7 +4,7 @@ import { COMPANY_NAME, CONTACT_EMAIL, PRODUCT_LINKS, SITE_URL } from "./site";
 // Datos estructurados (schema.org) para que Google entienda quién es la empresa,
 // qué ofrece y qué apps publica. Se insertan como JSON-LD en la portada.
 export const buildHomeJsonLd = (lang: Lang) => {
-  const { meta, services, products } = CONTENT[lang];
+  const { meta, services, products, work } = CONTENT[lang];
   const pageUrl = `${SITE_URL}${PATHS[lang].home === "/" ? "/" : PATHS[lang].home}`;
   const orgId = `${SITE_URL}/#organization`;
   const appInfo: Record<string, { url: string; category: string; sameAs: string[] }> = {
@@ -74,6 +74,14 @@ export const buildHomeJsonLd = (lang: Lang) => {
         operatingSystem: product.platforms.join(", "),
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         publisher: { "@id": orgId },
+      })),
+      ...work.items.map((item) => ({
+        "@type": "CreativeWork",
+        name: item.name,
+        description: item.description,
+        url: item.href,
+        image: `${SITE_URL}${item.icon}`,
+        creator: { "@id": orgId },
       })),
     ],
   };

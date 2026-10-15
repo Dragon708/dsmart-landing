@@ -1,4 +1,4 @@
-import { PRODUCT_LINKS } from "./site";
+import { PRODUCT_LINKS, WORK_LINKS } from "./site";
 
 export type Lang = "es" | "en";
 
@@ -14,6 +14,8 @@ type Product = {
   platforms: string[];
   links: ProductLink[];
 };
+
+type WorkItem = { name: string; kind: string; description: string; icon: string; tags: string[]; href: string };
 
 type PrivacySection = { title: string; body: string[] };
 
@@ -32,6 +34,7 @@ export type Content = {
   };
   services: { eyebrow: string; title: string; subtitle: string; items: { icon: ServiceIcon; title: string; desc: string }[] };
   products: { eyebrow: string; title: string; subtitle: string; available: string; items: Product[] };
+  work: { eyebrow: string; title: string; subtitle: string; visit: string; items: WorkItem[] };
   process: { eyebrow: string; title: string; steps: { title: string; desc: string }[] };
   stack: { title: string };
   about: { eyebrow: string; title: string; paragraphs: string[]; pillars: { title: string; desc: string }[] };
@@ -80,7 +83,7 @@ const es: Content = {
     ctaPrimary: "Cuéntanos tu proyecto",
     ctaSecondary: "Ver productos",
     stats: [
-      { value: "2", label: "productos en producción" },
+      { value: "5", label: "proyectos en producción" },
       { value: "3", label: "plataformas: Android, Windows y web" },
       { value: "100%", label: "del ciclo: diseño, código, nube y soporte" },
     ],
@@ -154,6 +157,41 @@ const es: Content = {
           { label: "Abrir en el navegador", href: PRODUCT_LINKS.calinvWeb },
           { label: "Sitio web", href: PRODUCT_LINKS.calinvLanding },
         ],
+      },
+    ],
+  },
+  work: {
+    eyebrow: "Más proyectos",
+    title: "Sitios, tiendas y herramientas que hemos lanzado",
+    subtitle: "Además de nuestras apps, construimos sitios y plataformas para negocios reales y herramientas para otros desarrolladores.",
+    visit: "Visitar",
+    items: [
+      {
+        name: "Electrónica al Máximo",
+        kind: "Sitio web y catálogo",
+        description:
+          "Sitio para un taller de reparación y venta de laptops: catálogo de equipos con consulta directa por WhatsApp, servicios y agenda de reparaciones.",
+        icon: "/products/electronica-al-maximo.png",
+        tags: ["Next.js", "Catálogo", "WhatsApp"],
+        href: WORK_LINKS.electronica,
+      },
+      {
+        name: "A-Pululu",
+        kind: "Tienda online",
+        description:
+          "Tienda para enviar combos de alimentos, cumpleaños y cárnicos a Cuba desde cualquier país, con varios comercios y pago con Visa o Mastercard.",
+        icon: "/products/apululu.png",
+        tags: ["E-commerce", "Pagos", "Multitienda"],
+        href: WORK_LINKS.apululu,
+      },
+      {
+        name: "DocMind",
+        kind: "SDK para desarrolladores",
+        description:
+          "Convierte PDF, Word, Excel, imágenes y más en texto y Markdown listo para IA, con OCR, en el navegador o en Node. Incluye un playground para probarlo con archivos reales.",
+        icon: "/products/docmind.png",
+        tags: ["TypeScript", "IA", "OCR", "npm"],
+        href: WORK_LINKS.docmind,
       },
     ],
   },
@@ -260,7 +298,7 @@ const en: Content = {
     ctaPrimary: "Tell us about your project",
     ctaSecondary: "See products",
     stats: [
-      { value: "2", label: "products in production" },
+      { value: "5", label: "projects in production" },
       { value: "3", label: "platforms: Android, Windows and web" },
       { value: "100%", label: "of the cycle: design, code, cloud and support" },
     ],
@@ -334,6 +372,41 @@ const en: Content = {
           { label: "Open in browser", href: PRODUCT_LINKS.calinvWeb },
           { label: "Website", href: PRODUCT_LINKS.calinvLanding },
         ],
+      },
+    ],
+  },
+  work: {
+    eyebrow: "More projects",
+    title: "Sites, stores and tools we have shipped",
+    subtitle: "Beyond our own apps, we build sites and platforms for real businesses and tools for other developers.",
+    visit: "Visit",
+    items: [
+      {
+        name: "Electrónica al Máximo",
+        kind: "Website and catalog",
+        description:
+          "Website for a laptop repair and sales shop: a product catalog with one-tap WhatsApp inquiries, services and repair booking.",
+        icon: "/products/electronica-al-maximo.png",
+        tags: ["Next.js", "Catalog", "WhatsApp"],
+        href: WORK_LINKS.electronica,
+      },
+      {
+        name: "A-Pululu",
+        kind: "Online store",
+        description:
+          "Store for sending food bundles, birthday packages and meat to Cuba from any country, with multiple merchants and Visa or Mastercard checkout.",
+        icon: "/products/apululu.png",
+        tags: ["E-commerce", "Payments", "Multi-store"],
+        href: WORK_LINKS.apululu,
+      },
+      {
+        name: "DocMind",
+        kind: "Developer SDK",
+        description:
+          "Turns PDF, Word, Excel, images and more into text and AI-ready Markdown, with OCR, in the browser or on Node. Includes a playground to try it with real files.",
+        icon: "/products/docmind.png",
+        tags: ["TypeScript", "AI", "OCR", "npm"],
+        href: WORK_LINKS.docmind,
       },
     ],
   },

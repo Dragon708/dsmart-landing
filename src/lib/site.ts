@@ -16,3 +16,9 @@ export const PRODUCT_LINKS = {
   calinvPlay: "https://play.google.com/store/apps/details?id=com.calinv.app",
   calinvWindows: "https://descargas.dsmarts.app/windows/Calinv-Setup-latest.exe",
 } as const;
+
+export const WORK_LINKS = {
+  electronica: "https://electronica-al-maximo.vercel.app",
+  apululu: "https://www.a-pululu.com/channel/default-channel",
+  docmind: "https://docmind-playground.vercel.app",
+} as const;

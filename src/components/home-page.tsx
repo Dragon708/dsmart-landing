@@ -14,7 +14,7 @@ const Eyebrow = ({ children }: { children: string }) => (
 );
 
 export const HomePage = ({ lang }: HomePageProps) => {
-  const { hero, services, products, process, stack, about, contact } = CONTENT[lang];
+  const { hero, services, products, work, process, stack, about, contact } = CONTENT[lang];
 
   // Escapa "<" para que ningún texto pueda cerrar la etiqueta <script>.
   const jsonLd = JSON.stringify(buildHomeJsonLd(lang)).replaceAll("<", "\\u003c");
@@ -150,6 +150,52 @@ export const HomePage = ({ lang }: HomePageProps) => {
                   </a>
                 ))}
               </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="work" className={`${container} scroll-mt-20 pb-20 sm:pb-28`}>
+        <div className="max-w-2xl">
+          <Eyebrow>{work.eyebrow}</Eyebrow>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{work.title}</h2>
+          <p className="mt-4 text-lg text-muted">{work.subtitle}</p>
+        </div>
+        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+          {work.items.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener"
+                className="card-hover group flex h-full flex-col rounded-3xl border border-white/10 bg-surface p-7"
+              >
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="size-14 rounded-xl outline outline-1 -outline-offset-1 outline-white/10"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-xs text-muted">{item.kind}</p>
+                    <h3 className="text-xl font-bold">{item.name}</h3>
+                  </div>
+                </div>
+                <p className="mt-5 flex-1 text-sm leading-relaxed text-muted">{item.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <span key={tag} className="rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-muted">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                  {work.visit}
+                  <ArrowIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </a>
             </li>
           ))}
         </ul>
