@@ -30,7 +30,7 @@ export const buildHomeJsonLd = (lang: Lang) => {
         alternateName: "DSmart Solutions",
         url: SITE_URL,
         logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/dsmart-icon-512.png`, width: 512, height: 512 },
-        image: `${SITE_URL}/brand/dsmart-logo.png`,
+        image: [`${SITE_URL}/brand/dsmart-logo.png`, `${SITE_URL}/brand/og-image-${lang}.jpg`],
         email: CONTACT_EMAIL,
         description: meta.description,
         contactPoint: {
