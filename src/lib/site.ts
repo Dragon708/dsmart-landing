@@ -4,6 +4,7 @@ export const SITE_URL = "https://dsmarts.app";
 export const COMPANY_NAME = "DSmart";
 export const CONTACT_EMAIL = "jorgegmdgonzalez@gmail.com";
 export const PRIVACY_UPDATED = "2026-10-15";
+export const WHATSAPP_URL = "https://wa.me/5355179245";
 
 export const PRODUCT_LINKS = {
   mythicLanding: "https://mythic.dsmarts.app",

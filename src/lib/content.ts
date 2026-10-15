@@ -2,13 +2,16 @@ import { PRODUCT_LINKS } from "./site";
 
 export type Lang = "es" | "en";
 
+export type ServiceIcon = "mobile" | "web" | "desktop" | "api" | "realtime" | "ai";
+
 type ProductLink = { label: string; href: string };
 
 type Product = {
   name: string;
-  status: string;
+  tagline: string;
   description: string;
-  icon?: string;
+  icon: string;
+  platforms: string[];
   links: ProductLink[];
 };
 
@@ -16,59 +19,122 @@ type PrivacySection = { title: string; body: string[] };
 
 export type Content = {
   meta: { title: string; description: string; privacyTitle: string };
-  nav: { about: string; products: string; contact: string; privacy: string; switchLang: string };
-  hero: { eyebrow: string; title: string; subtitle: string; ctaProducts: string; ctaContact: string };
-  about: { title: string; paragraphs: string[]; pillars: { title: string; desc: string }[] };
-  products: { title: string; subtitle: string; items: Product[] };
-  contact: { title: string; subtitle: string; emailLabel: string };
-  footer: { rights: string; privacy: string };
+  nav: { services: string; products: string; process: string; contact: string; cta: string; switchLang: string };
+  hero: {
+    eyebrow: string;
+    titleStart: string;
+    titleHighlight: string;
+    titleEnd: string;
+    subtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    stats: { value: string; label: string }[];
+  };
+  services: { eyebrow: string; title: string; subtitle: string; items: { icon: ServiceIcon; title: string; desc: string }[] };
+  products: { eyebrow: string; title: string; subtitle: string; available: string; items: Product[] };
+  process: { eyebrow: string; title: string; steps: { title: string; desc: string }[] };
+  stack: { title: string };
+  about: { eyebrow: string; title: string; paragraphs: string[]; pillars: { title: string; desc: string }[] };
+  contact: { title: string; subtitle: string; email: string; whatsapp: string };
+  footer: { tagline: string; rights: string; privacy: string; sections: string };
   privacy: { title: string; updated: string; intro: string; sections: PrivacySection[] };
 };
 
+export const STACK = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "React Native",
+  "Expo",
+  "Node.js",
+  "Supabase",
+  "PostgreSQL",
+  "LiveKit",
+  "Tailwind CSS",
+  "Vercel",
+  "Cloudflare",
+];
+
 const es: Content = {
   meta: {
-    title: "DSmart — Software útil para la vida diaria",
+    title: "DSmart — Desarrollo de software: apps móviles, web y escritorio",
     description:
-      "DSmart es una compañía de software que crea apps y servicios web. Conoce nuestros productos: Mythic Lobby y Calinv.",
+      "DSmart diseña y desarrolla apps para Android, Windows y la web: productos propios como Mythic Lobby y Calinv, y software a medida para empresas.",
     privacyTitle: "Política de privacidad",
   },
   nav: {
-    about: "Qué es DSmart",
+    services: "Servicios",
     products: "Productos",
+    process: "Cómo trabajamos",
     contact: "Contacto",
-    privacy: "Privacidad",
-    switchLang: "English",
+    cta: "Hablemos",
+    switchLang: "EN",
   },
   hero: {
-    eyebrow: "Compañía de software",
-    title: "Creamos apps y servicios que la gente usa cada día.",
+    eyebrow: "Estudio de software",
+    titleStart: "Software que ",
+    titleHighlight: "funciona",
+    titleEnd: " en el mundo real.",
     subtitle:
-      "DSmart diseña, construye y opera productos digitales para Android, Windows y la web, de la idea a producción.",
-    ctaProducts: "Ver productos",
-    ctaContact: "Contactar",
-  },
-  about: {
-    title: "Qué es DSmart",
-    paragraphs: [
-      "DSmart es una compañía de software independiente. Desarrollamos productos propios para móvil, escritorio y web, y nos encargamos de todo el ciclo: diseño, desarrollo, infraestructura y soporte.",
-      "Cada producto vive en su propio subdominio de dsmarts.app y tiene su propia política de privacidad y condiciones de uso.",
+      "Diseñamos, construimos y operamos apps para Android, Windows y la web. Las mismas manos que lanzaron Mythic Lobby y Calinv pueden construir el tuyo.",
+    ctaPrimary: "Cuéntanos tu proyecto",
+    ctaSecondary: "Ver productos",
+    stats: [
+      { value: "2", label: "productos en producción" },
+      { value: "3", label: "plataformas: Android, Windows y web" },
+      { value: "100%", label: "del ciclo: diseño, código, nube y soporte" },
     ],
-    pillars: [
-      { title: "Producto propio", desc: "Construimos y mantenemos nuestras apps de principio a fin." },
-      { title: "Móvil, escritorio y web", desc: "Apps para Android y Windows, y versiones web que funcionan en cualquier navegador." },
-      { title: "Privacidad por defecto", desc: "Pedimos solo los datos necesarios para que cada producto funcione." },
+  },
+  services: {
+    eyebrow: "Servicios",
+    title: "Lo que podemos construir contigo",
+    subtitle: "Del prototipo al producto en producción, con el mismo equipo de principio a fin.",
+    items: [
+      {
+        icon: "mobile",
+        title: "Apps móviles",
+        desc: "Apps para Android e iOS con React Native y Expo, listas para publicar en Google Play y App Store.",
+      },
+      {
+        icon: "web",
+        title: "Aplicaciones web y SaaS",
+        desc: "Plataformas web rápidas y escalables con Next.js: paneles, portales de clientes y productos por suscripción.",
+      },
+      {
+        icon: "desktop",
+        title: "Software de escritorio",
+        desc: "Aplicaciones para Windows que funcionan sin conexión y se sincronizan cuando vuelve internet.",
+      },
+      {
+        icon: "api",
+        title: "Backend, APIs e integraciones",
+        desc: "Bases de datos, autenticación, pagos y APIs a medida para conectar tus sistemas.",
+      },
+      {
+        icon: "realtime",
+        title: "Tiempo real: voz, video y chat",
+        desc: "Salas de voz, transmisiones en vivo y mensajería en tiempo real, como en Mythic Lobby.",
+      },
+      {
+        icon: "ai",
+        title: "IA y automatización",
+        desc: "Asistentes, procesamiento de documentos y automatizaciones que ahorran horas de trabajo manual.",
+      },
     ],
   },
   products: {
-    title: "Productos",
-    subtitle: "Apps que ya puedes usar hoy.",
+    eyebrow: "Productos",
+    title: "Hechos por nosotros, usados cada día",
+    subtitle: "Nuestros productos propios son la mejor prueba de cómo trabajamos.",
+    available: "Disponible",
     items: [
       {
         name: "Mythic Lobby",
-        status: "Disponible",
+        tagline: "Comunidad gamer",
         description:
-          "Comunidad gamer para armar squad, competir en torneos, transmitir partidas y hablar por voz. Disponible en Android y en la web.",
+          "Arma squad, compite en torneos con árbitros, transmite tus partidas y habla por voz con tu equipo, en cualquier juego.",
         icon: "/products/mythic-lobby.png",
+        platforms: ["Android", "Web"],
         links: [
           { label: "Google Play", href: PRODUCT_LINKS.mythicPlay },
           { label: "Abrir en el navegador", href: PRODUCT_LINKS.mythicWeb },
@@ -77,10 +143,11 @@ const es: Content = {
       },
       {
         name: "Calinv",
-        status: "Disponible",
+        tagline: "Inventario y caja",
         description:
-          "Inventario y caja para tiendas pequeñas, sin internet. Gratis para un negocio; con Premium sincroniza teléfonos, tiendas y personal. En Android, Windows y la web.",
+          "Inventario y ventas para tiendas pequeñas, sin internet. Gratis para un negocio; con Premium sincroniza teléfonos, tiendas y personal.",
         icon: "/products/calinv.png",
+        platforms: ["Android", "Windows", "Web"],
         links: [
           { label: "Google Play", href: PRODUCT_LINKS.calinvPlay },
           { label: "Descargar para Windows", href: PRODUCT_LINKS.calinvWindows },
@@ -90,12 +157,42 @@ const es: Content = {
       },
     ],
   },
-  contact: {
-    title: "Contacto",
-    subtitle: "¿Tienes una pregunta, una propuesta o necesitas soporte? Escríbenos y te respondemos.",
-    emailLabel: "Escríbenos a",
+  process: {
+    eyebrow: "Cómo trabajamos",
+    title: "Un proceso claro, sin sorpresas",
+    steps: [
+      { title: "Descubrimiento", desc: "Entendemos tu negocio, tus usuarios y qué tiene que resolver el software." },
+      { title: "Diseño", desc: "Definimos pantallas, flujos y arquitectura antes de escribir código." },
+      { title: "Desarrollo", desc: "Entregas frecuentes que puedes probar desde la primera semana." },
+      { title: "Lanzamiento y soporte", desc: "Publicamos en tiendas y en la nube, y seguimos contigo después." },
+    ],
   },
-  footer: { rights: "Todos los derechos reservados.", privacy: "Política de privacidad" },
+  stack: { title: "Tecnologías con las que trabajamos" },
+  about: {
+    eyebrow: "Qué es DSmart",
+    title: "Una compañía de software independiente",
+    paragraphs: [
+      "En DSmart creamos productos propios y software a medida. Nos encargamos de todo el ciclo: diseño, desarrollo, infraestructura y soporte.",
+      "Cada producto vive en su propio subdominio de dsmarts.app y tiene su propia política de privacidad y condiciones de uso.",
+    ],
+    pillars: [
+      { title: "Producto propio", desc: "Construimos y mantenemos nuestras apps de principio a fin." },
+      { title: "Móvil, escritorio y web", desc: "Una sola base para llegar a Android, Windows y el navegador." },
+      { title: "Privacidad por defecto", desc: "Pedimos solo los datos necesarios para que cada producto funcione." },
+    ],
+  },
+  contact: {
+    title: "¿Tienes un proyecto en mente?",
+    subtitle: "Cuéntanos qué necesitas y te respondemos con una propuesta. Sin compromiso.",
+    email: "Escríbenos un correo",
+    whatsapp: "Escríbenos por WhatsApp",
+  },
+  footer: {
+    tagline: "Apps móviles, web y de escritorio.",
+    rights: "Todos los derechos reservados.",
+    privacy: "Política de privacidad",
+    sections: "Secciones",
+  },
   privacy: {
     title: "Política de privacidad",
     updated: "Última actualización: 15 de octubre de 2026",
@@ -140,47 +237,84 @@ const es: Content = {
 
 const en: Content = {
   meta: {
-    title: "DSmart — Useful software for everyday life",
+    title: "DSmart — Software development: mobile, web and desktop apps",
     description:
-      "DSmart is a software company building apps and web services. Meet our products: Mythic Lobby and Calinv.",
+      "DSmart designs and builds apps for Android, Windows and the web: our own products such as Mythic Lobby and Calinv, and custom software for businesses.",
     privacyTitle: "Privacy policy",
   },
   nav: {
-    about: "About",
+    services: "Services",
     products: "Products",
+    process: "How we work",
     contact: "Contact",
-    privacy: "Privacy",
-    switchLang: "Español",
+    cta: "Let's talk",
+    switchLang: "ES",
   },
   hero: {
-    eyebrow: "Software company",
-    title: "We build apps and services people use every day.",
-    subtitle: "DSmart designs, builds and runs digital products for Android, Windows and the web, from idea to production.",
-    ctaProducts: "See products",
-    ctaContact: "Get in touch",
-  },
-  about: {
-    title: "What is DSmart",
-    paragraphs: [
-      "DSmart is an independent software company. We build our own mobile, desktop and web products and take care of the whole cycle: design, development, infrastructure and support.",
-      "Each product lives on its own dsmarts.app subdomain and has its own privacy policy and terms of use.",
+    eyebrow: "Software studio",
+    titleStart: "Software that ",
+    titleHighlight: "works",
+    titleEnd: " in the real world.",
+    subtitle:
+      "We design, build and run apps for Android, Windows and the web. The same team that launched Mythic Lobby and Calinv can build yours.",
+    ctaPrimary: "Tell us about your project",
+    ctaSecondary: "See products",
+    stats: [
+      { value: "2", label: "products in production" },
+      { value: "3", label: "platforms: Android, Windows and web" },
+      { value: "100%", label: "of the cycle: design, code, cloud and support" },
     ],
-    pillars: [
-      { title: "Our own products", desc: "We build and maintain our apps end to end." },
-      { title: "Mobile, desktop and web", desc: "Apps for Android and Windows, plus web versions that run in any browser." },
-      { title: "Privacy by default", desc: "We only ask for the data each product needs to work." },
+  },
+  services: {
+    eyebrow: "Services",
+    title: "What we can build with you",
+    subtitle: "From prototype to production, with the same team from start to finish.",
+    items: [
+      {
+        icon: "mobile",
+        title: "Mobile apps",
+        desc: "Android and iOS apps built with React Native and Expo, ready for Google Play and the App Store.",
+      },
+      {
+        icon: "web",
+        title: "Web apps and SaaS",
+        desc: "Fast, scalable web platforms with Next.js: dashboards, client portals and subscription products.",
+      },
+      {
+        icon: "desktop",
+        title: "Desktop software",
+        desc: "Windows apps that work offline and sync when the connection comes back.",
+      },
+      {
+        icon: "api",
+        title: "Backend, APIs and integrations",
+        desc: "Databases, authentication, payments and custom APIs to connect your systems.",
+      },
+      {
+        icon: "realtime",
+        title: "Real time: voice, video and chat",
+        desc: "Voice rooms, live streaming and real-time messaging, as in Mythic Lobby.",
+      },
+      {
+        icon: "ai",
+        title: "AI and automation",
+        desc: "Assistants, document processing and automations that save hours of manual work.",
+      },
     ],
   },
   products: {
-    title: "Products",
-    subtitle: "Apps you can use today.",
+    eyebrow: "Products",
+    title: "Built by us, used every day",
+    subtitle: "Our own products are the best proof of how we work.",
+    available: "Available",
     items: [
       {
         name: "Mythic Lobby",
-        status: "Available",
+        tagline: "Gaming community",
         description:
-          "A gaming community to find your squad, compete in tournaments, stream matches and talk over voice. Available on Android and the web.",
+          "Find your squad, compete in refereed tournaments, stream your matches and talk over voice with your team, in any game.",
         icon: "/products/mythic-lobby.png",
+        platforms: ["Android", "Web"],
         links: [
           { label: "Google Play", href: PRODUCT_LINKS.mythicPlay },
           { label: "Open in browser", href: PRODUCT_LINKS.mythicWeb },
@@ -189,10 +323,11 @@ const en: Content = {
       },
       {
         name: "Calinv",
-        status: "Available",
+        tagline: "Inventory and sales",
         description:
-          "Stock and cash drawer for small shops, fully offline. Free for one business; Premium syncs phones, stores and staff. On Android, Windows and the web.",
+          "Inventory and sales for small shops, no internet needed. Free for one business; Premium syncs phones, stores and staff.",
         icon: "/products/calinv.png",
+        platforms: ["Android", "Windows", "Web"],
         links: [
           { label: "Google Play", href: PRODUCT_LINKS.calinvPlay },
           { label: "Download for Windows", href: PRODUCT_LINKS.calinvWindows },
@@ -202,12 +337,42 @@ const en: Content = {
       },
     ],
   },
-  contact: {
-    title: "Contact",
-    subtitle: "Have a question, a proposal or need support? Write to us and we will get back to you.",
-    emailLabel: "Email us at",
+  process: {
+    eyebrow: "How we work",
+    title: "A clear process, no surprises",
+    steps: [
+      { title: "Discovery", desc: "We learn your business, your users and what the software has to solve." },
+      { title: "Design", desc: "We define screens, flows and architecture before writing code." },
+      { title: "Development", desc: "Frequent deliveries you can try from the first week." },
+      { title: "Launch and support", desc: "We ship to the stores and the cloud, and stay with you afterwards." },
+    ],
   },
-  footer: { rights: "All rights reserved.", privacy: "Privacy policy" },
+  stack: { title: "Technologies we work with" },
+  about: {
+    eyebrow: "About DSmart",
+    title: "An independent software company",
+    paragraphs: [
+      "At DSmart we build our own products and custom software. We take care of the whole cycle: design, development, infrastructure and support.",
+      "Each product lives on its own dsmarts.app subdomain and has its own privacy policy and terms of use.",
+    ],
+    pillars: [
+      { title: "Our own products", desc: "We build and maintain our apps end to end." },
+      { title: "Mobile, desktop and web", desc: "One codebase to reach Android, Windows and the browser." },
+      { title: "Privacy by default", desc: "We only ask for the data each product needs to work." },
+    ],
+  },
+  contact: {
+    title: "Have a project in mind?",
+    subtitle: "Tell us what you need and we will reply with a proposal. No strings attached.",
+    email: "Send us an email",
+    whatsapp: "Message us on WhatsApp",
+  },
+  footer: {
+    tagline: "Mobile, web and desktop apps.",
+    rights: "All rights reserved.",
+    privacy: "Privacy policy",
+    sections: "Sections",
+  },
   privacy: {
     title: "Privacy policy",
     updated: "Last updated: October 15, 2026",

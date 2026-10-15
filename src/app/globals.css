@@ -1,39 +1,31 @@
 @import "tailwindcss";
 
-/* Identidad provisional: cambiar estos tokens cambia toda la paleta. */
+/* Paleta de marca, a juego con el logo: azul marino profundo + dorado. Cambiar aquí cambia todo el sitio. */
 :root {
-  --background: #fbfbfd;
-  --surface: #ffffff;
-  --border: #e4e7ee;
-  --foreground: #0f172a;
-  --muted: #5b6477;
-  --primary: #2f5bea;
-  --primary-soft: #eaf0ff;
-  --on-primary: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b0f19;
-    --surface: #121827;
-    --border: #232b3d;
-    --foreground: #eef1f7;
-    --muted: #9aa3b5;
-    --primary: #7c9bff;
-    --primary-soft: #1a2445;
-    --on-primary: #0b0f19;
-  }
+  --background: #040817;
+  --surface: #0a1230;
+  --surface-2: #0f1b45;
+  --border: #1c2a5e;
+  --foreground: #f3f5fc;
+  --muted: #9aa6c8;
+  --primary: #f2c14e;
+  --primary-2: #ffe49a;
+  --on-primary: #1a1300;
+  --royal: #2453ff;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-border: var(--border);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-primary: var(--primary);
-  --color-primary-soft: var(--primary-soft);
+  --color-primary-2: var(--primary-2);
   --color-on-primary: var(--on-primary);
+  --color-royal: var(--royal);
   --font-sans: var(--font-geist-sans);
 }
 
@@ -55,8 +47,74 @@ p {
   text-wrap: pretty;
 }
 
+.text-gradient {
+  background: linear-gradient(100deg, var(--primary) 10%, var(--primary-2) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--royal) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--royal) 14%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
+}
+
+.glow {
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--royal) 45%, transparent), transparent);
+  filter: blur(40px);
+}
+
+.card-hover {
+  transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.glow-gold {
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--primary) 25%, transparent), transparent);
+  filter: blur(40px);
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fade-up {
+  animation: fade-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .fade-up,
+  .float {
+    animation: none;
+  }
+  .card-hover:hover {
+    transform: none;
   }
 }

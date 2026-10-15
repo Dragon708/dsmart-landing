@@ -1,15 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type WordmarkProps = { href: string };
 
 export const Wordmark = ({ href }: WordmarkProps) => (
-  <Link href={href} className="flex items-center gap-2 font-semibold tracking-tight" aria-label="DSmart">
-    <span
-      aria-hidden
-      className="grid size-8 place-items-center rounded-lg bg-primary text-sm font-bold text-on-primary"
-    >
-      D
+  <Link href={href} className="flex items-center gap-2.5" aria-label="DSmart">
+    <Image src="/brand/dsmart-d.webp" alt="" width={34} height={33} className="h-8 w-auto" />
+    <span className="text-lg font-bold tracking-tight">
+      D<span className="text-gradient">SMART</span>
     </span>
-    <span className="text-lg">DSmart</span>
   </Link>
 );
